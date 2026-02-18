@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Untuk Caca ❤️</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff7aa2, #ffb6c1);
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* PAGE */
+.page {
+    display: none;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+}
+.active { display: block; }
+
+/* LOVE BUTTON */
+.love-btn {
+    width: 130px;
+    height: 130px;
+    background: #ff2e63;
+    border: none;
+    transform: rotate(-45deg);
+    position: relative;
+    cursor: pointer;
+    margin: auto;
+    animation: pulse 2.5s infinite;
+}
+.love-btn::before,
+.love-btn::after {
+    content: "";
+    width: 130px;
+    height: 130px;
+    background: #ff2e63;
+    border-radius: 50%;
+    position: absolute;
+}
+.love-btn::before { top: -65px; left: 0; }
+.love-btn::after { left: 65px; top: 0; }
+
+@keyframes pulse {
+    0% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.07); }
+    100% { transform: rotate(-45deg) scale(1); }
+}
+
+/* FLOWERS PAGE 1 */
+.flower {
+    position: absolute;
+    font-size: 26px;
+    opacity: 0.85;
+    animation: float 7s infinite ease-in-out;
+}
+.f1 { top: 15%; left: 20%; }
+.f2 { top: 25%; right: 18%; animation-delay: 1s; }
+.f3 { bottom: 25%; left: 15%; animation-delay: 2s; }
+.f4 { bottom: 20%; right: 20%; animation-delay: 3s; }
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0); }
+}
+
+/* PAGE 2 */
+.page2-bg {
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    padding: 30px;
+    border-radius: 25px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 40px rgba(255,255,255,0.15);
+}
+
+.pesan {
+    font-size: 18px;
+    line-height: 1.9;
+    white-space: pre-line;
+    text-align: left;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 18px;
+    background: white;
+    animation: blink 1s infinite;
+    margin-left: 4px;
+}
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HALAMAN 1 -->
+<div class="page active" id="page1">
+    <div class="flower f1">🌸</div>
+    <div class="flower f2">🌷</div>
+    <div class="flower f3">🌼</div>
+    <div class="flower f4">🌹</div>
+
+    <button class="love-btn" onclick="bukaPesan()"></button>
+</div>
+
+<!-- HALAMAN 2 -->
+<div class="page" id="page2">
+    <div class="page2-bg">
+        <div class="pesan">
+            <span id="text"></span><span class="cursor"></span>
+        </div>
+    </div>
+</div>
+
+<!-- MUSIK -->
+<audio id="musik" loop>
+    <source src="Nadhif Basalamah - kota ini tak sama tanpamu (Official Lyric Video).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const kata = `
+Haloo caa…
+
+hemm…
+akuu nulis inii
+dan bikinn inii
+awalnyaa nggaa pernah akuu rencanain.
+inii muncul pelan-pelan,
+tanpaa aba-aba.
+
+so…
+inii bukan cerita
+yang tibaa-tibaa besarr.
+inii cerita kecil,
+tapii nyantoll.
+
+akuu masih inget jelas
+pertama kalinyaa akuu ngeliatt kamuu.
+waktu ituu dii rumah kamuu.
+akuu dateng,
+entah belanjaa atau apa,
+detail kecilnyaa akuu lupaa.
+
+tapii satuu hal
+yangg akuu inget,
+hari ituu kamuu ada.
+
+dii situu posisi akuu
+belumm kenal kamuu.
+belumm ngobroll.
+belumm deket.
+bahkann belumm pernah
+chat-an sama kamuu.
+
+akuu cuma ngeliatt.
+ituu ajaa.
+
+tapii anehh nyaa,
+darii satuu kali liatt ituu,
+adaa rasaa
+yangg tibaa-tibaa muncul.
+nggaa rame,
+nggaa ribett,
+cuma rasaa hangatt
+yangg susah dijelasin.
+
+akuu sampe mikirr,
+“kenapaa yaa?”
+“padahal akuu nggaa kenal dia.”
+
+karenaa jujurr ajaa,
+waktu ituu
+akuu nggaa ada niatt apa-apa.
+nggaa kepikiran buat deket.
+nggaa kepikiran buat kenalan.
+nggaa kepikiran buat chat-an.
+
+apalagii pas kamuu sempet nanyaa
+soall sii Pinoo.
+bukan karena kamuu deket,
+tapii karena kamuu
+mauu kenalan.
+
+dii situu akuu mikirr,
+“ohh, berarti kamuu
+lagii tertarikk sama orangg laen.”
+
+so yaa…
+akuu milih buat diem.
+akuu mundurr.
+akuu nggaa mauu sok punyaa rasaa
+padahal belumm adaa apa-apa.
+
+akuu lanjutin hari akuu
+kayakk biasaa.
+nggaa chat.
+nggaa nyari alasan
+buat muncul dii hidup kamuu.
+
+tapii entah kenapaa,
+walaupun nggaa chat-an,
+kamuu tetep muncul dii pikiran.
+
+akuu mulai keingett
+cara kamuu berdirii.
+cara kamuu ngomong.
+cara kamuu keliatan tenangg.
+
+dan dii situu akuu sadar,
+rasaa ituu nyata,
+walaupun akuu belumm kenal kamuu.
+
+waktu berjalan,
+dan keadaan tetep samasamaa.
+akuu sama kamuu
+masih nggaa chat-an.
+
+tapii rasaa inii
+nggaa ikut ilang.
+malah tumbuh pelan.
+
+akuu mikirr lamaa.
+takutt kalo akuu salah.
+takutt kalo akuu kegeeran.
+
+sampe akhirnyyaa,
+akuu mutusin
+buat cobaa kenal kamuu.
+bukan langsung deket,
+bukan langsung apa-apa,
+cuma pengenn
+tauu kamuu lebih.
+
+dan darii situu,
+akuu minta nomor kamuu
+ke Andree.
+
+jujurr ajaa,
+waktu dapett nomormuu,
+akuu diem lamaa.
+akuu mikirr,
+“akuu belumm kenal dia,
+tapii rasaa inii udah ada.”
+
+dan sekarangg,
+setelah semuaa ituu,
+akuu nggaa mauu muterr-muterr lagii.
+
+akuu mauu jujurr.
+
+akuu sukaa sama kamuu, caa.
+bukan karena sering chat.
+bukan karena deket lamaa.
+tapii karena rasaa ituu muncul
+tanpaa akuu paksa.
+
+dan pelan-pelan,
+rasaa ituu berubah.
+
+akuu peduli.
+akuu nyamann.
+dan sekarangg akuu tauu…
+
+akuu sayangg sama kamuu.
+
+iyaa…
+akuu jatuh cintaa sama kamuu 🤍
+`;
+
+let i = 0;
+const speed = 120;
+const textEl = document.getElementById("text");
+
+function bukaPesan() {
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+    document.getElementById("musik").play();
+    ketik();
+}
+
+function ketik() {
+    if (i < kata.length) {
+        textEl.innerHTML += kata.charAt(i);
+        i++;
+
+        // AUTO SCROLL HALUS
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
+
+        setTimeout(ketik, speed);
+    }
+}
+</script>
+
+</body>
+</html>
